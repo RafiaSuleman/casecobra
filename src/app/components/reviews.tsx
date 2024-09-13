@@ -39,6 +39,7 @@ function ReviewColumn({
 }: {
   reviews: string[]
   className?: string
+//   how many review review index
   reviewClassName?: (reviewIndex: number) => string
   msPerPixel?: number
 }) {
