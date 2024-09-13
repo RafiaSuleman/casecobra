@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import MaxWidthWrapper from "./components/maxwidtwrapper";
 import { Check, Star } from "lucide-react";
 import Phone from "./components/phone";
@@ -18,12 +18,12 @@ export default function Home() {
                 <img src="/snake-1.png" className="w-full" />
               </div>
               <h1 className="realtive w-fit tracking-tight text-balance mt-16 font-bold!leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
-                Your Image on a{" "}
-                <span className="bg-green-600 px-2 text-white">Custom</span>{" "}
+                Your Image on a
+                <span className="bg-green-600 px-2 text-white">Custom</span>
                 Phone
               </h1>
               <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
-                Capture your favorite memories with your own,{" "}
+                Capture your favorite memories with your own,
                 <span className="font-semibold">one-of-one</span> phone case.
                 CaseCobra allows you to protect your memories, not just your
                 phone case.
@@ -107,11 +107,11 @@ export default function Home() {
         <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-32'>
           <div className='flex flex-col lg:flex-row items-center gap-4 sm:gap-6'>
             <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
-              What our{' '}
+              What our
               <span className='relative px-2'>
-                customers{' '}
+                customers
                 <Icons.underline className='hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-green-500' />
-              </span>{' '}
+              </span>
               say
             </h2>
             <img src='/snake-2.png' className='w-24 order-0 lg:order-2' />
@@ -131,7 +131,7 @@ export default function Home() {
               <div className='text-lg leading-8'>
                 <p>
                   "The case feels durable and I even got a compliment on the
-                  design. Had the case for two and a half months now and{' '}
+                  design. Had the case for two and a half months now and
                   <span className='p-0.5 bg-slate-800 text-white'>
                     the image is super clear
                   </span>
@@ -169,7 +169,7 @@ export default function Home() {
                   "I usually keep my phone together with my keys in my pocket
                   and that led to some pretty heavy scratchmarks on all of my
                   last phone cases. This one, besides a barely noticeable
-                  scratch on the corner,{' '}
+                  scratch on the corner, 
                   <span className='p-0.5 bg-slate-800 text-white'>
                     looks brand new after about half a year
                   </span>
