@@ -3,7 +3,7 @@ import MaxWidthWrapper from "./components/maxwidtwrapper";
 import { ArrowRight, Check, Star } from "lucide-react";
 import Phone from "./components/phone";
 import { Icons } from "./components/icons";
-import { Reviews } from "./components/reviews";
+// import { Reviews } from "./components/reviews";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
