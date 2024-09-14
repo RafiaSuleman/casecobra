@@ -39,7 +39,7 @@ function ReviewColumn({
 }: {
   reviews: string[]
   className?: string
-//   how many review review index
+//   how many review review index 
   reviewClassName?: (reviewIndex: number) => string
   msPerPixel?: number
 }) {
@@ -49,7 +49,7 @@ function ReviewColumn({
 
   useEffect(() => {
     if (!columnRef.current) return
-
+// listen resizing 
     const resizeObserver = new window.ResizeObserver(() => {
       setColumnHeight(columnRef.current?.offsetHeight ?? 0)
     })

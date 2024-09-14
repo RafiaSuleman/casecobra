@@ -54,8 +54,13 @@ const config: Config = {
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
+  			sm: 'calc(var(--radius) - 4px)',
+			
+  		},
+		animation: {
+			"marquee":'marquee var(--marquee-duration) linear infinite',
+			"fade-in":"fade-in 0.5s linear forwards"
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
