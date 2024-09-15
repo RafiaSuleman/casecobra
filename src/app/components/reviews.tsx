@@ -163,7 +163,7 @@ export function Reviews() {
       <img
         aria-hidden='true'
         src='/what-people-are-buying.png'
-        className='absolute select-none hidden xl:block -left-32 top-1/3'
+        className='absolute select-none hidden xl:block -left-44 top-1/3'
       />
 
       <ReviewGrid />

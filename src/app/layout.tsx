@@ -1,7 +1,9 @@
+import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import Footer from "./components/footer";
 import Navbar from "./components/navbar";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +32,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar/>
-        {children}
+        <main className="flex flex-col min-h-[calc(100vh-3.5rem-1px)]"> 
+          <div className="flex-1 flex flex-col h-full">
+          {children}
+          </div>
+          <Footer/>
+          </main>
+          <Toaster/>
+       {/* 3.5 navbar height 1px-> 1px scrollable to avoid  */}
+       
       </body>
     </html>
   );
