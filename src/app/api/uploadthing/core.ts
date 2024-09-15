@@ -1,6 +1,5 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
-import {z} from 'zod'
+import { z } from 'zod';
 
 const f = createUploadthing();
 
