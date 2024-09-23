@@ -80,7 +80,6 @@ const Steps = () => {
               </span>
 
               {/* separator */}
-              {/* steps k darmyan seperator sirf 2 nd 3 k darmyan ho seprator(line jo steps 1nd 2 or 2nd3 k darmyan ha) */}
               {i !== 0 ? (
                 <div className='absolute inset-0 hidden w-3 lg:block'>
                   <svg

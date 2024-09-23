@@ -7,7 +7,7 @@ import Phone from './phone'
 import MaxWidthWrapper from './maxwidtwrapper'
 import { useInView } from 'framer-motion'
 
-
+// array of images
 const PHONES = [
   '/testimonials/1.jpg',
   '/testimonials/2.jpg',
@@ -17,6 +17,7 @@ const PHONES = [
   '/testimonials/6.jpg',
 ]
 
+// split array into numparts
 function splitArray<T>(array: Array<T>, numParts: number) {
   const result: Array<Array<T>> = []
 
@@ -43,10 +44,12 @@ function ReviewColumn({
   reviewClassName?: (reviewIndex: number) => string
   msPerPixel?: number
 }) {
+  //column height k refrence
   const columnRef = useRef<HTMLDivElement | null>(null)
   const [columnHeight, setColumnHeight] = useState(0)
   const duration = `${columnHeight * msPerPixel}ms`
 
+  // track column height and update scroll duration 
   useEffect(() => {
     if (!columnRef.current) return
 // listen resizing 
@@ -62,8 +65,10 @@ function ReviewColumn({
   }, [])
 
   return (
+    // reviews ko infinite krka map kr raha ha 
     <div
       ref={columnRef}
+      // #yaha ya ku define ki h classname koma k baad
       className={cn('animate-marquee space-y-8 py-4', className)}
       style={{ '--marquee-duration': duration } as React.CSSProperties}>
       {reviews.concat(reviews).map((imgSrc, reviewIndex) => (
@@ -76,11 +81,12 @@ function ReviewColumn({
     </div>
   )
 }
-
+// why create interface
 interface ReviewProps extends HTMLAttributes<HTMLDivElement> {
   imgSrc: string
 }
 
+//rendalmly pick krta h delay or img+phn show krwata ah
 function Review({ imgSrc, className, ...props }: ReviewProps) {
   const POSSIBLE_ANIMATION_DELAYS = [
     '0s',
@@ -95,7 +101,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
     POSSIBLE_ANIMATION_DELAYS[
       Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAYS.length)
     ]
-
+// fade effect k lya
   return (
     <div
       className={cn(
@@ -120,7 +126,7 @@ function ReviewGrid() {
   const column3 = splitArray(columns[2], 2)
 
   return (
-   
+  //  #if else
     <div
       ref={containerRef}
       className='relative -mx-4 mt-16 grid h-[49rem] max-h-[150vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 sm:mt-20 md:grid-cols-2 lg:grid-cols-3'>
@@ -134,6 +140,7 @@ function ReviewGrid() {
                 'lg:hidden': reviewIndex >= column1.length,
               })
             }
+            // scroll speed
             msPerPixel={10}
           />
           <ReviewColumn
