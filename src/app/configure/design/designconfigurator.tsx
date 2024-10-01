@@ -36,7 +36,7 @@ const DesignConfigurator = ({
   const router = useRouter()
 
   // wen we call this function saved croped image and update db both functions run
-   const { mutate: saveConfig, isPending } = useMutation({
+   const { mutate: saveConfig } = useMutation({
      mutationKey: ['save-config'],
      mutationFn: async (args: SaveConfigArgs) => {
       // saveConfiguration saved croped image

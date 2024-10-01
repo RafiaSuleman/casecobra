@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 import Confetti from 'react-dom-confetti'
 import { BASE_PRICE, PRODUCT_PRICES } from '@/app/config/product'
 import Phone from '@/app/components/phone'
-import { useToast } from '@/hooks/use-toast'
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
