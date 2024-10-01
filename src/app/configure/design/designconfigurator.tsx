@@ -17,6 +17,8 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { useToast } from '@/hooks/use-toast'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { BASE_PRICE } from '@/app/config/product'
+import { useMutation } from '@tanstack/react-query'
+import { saveConfig as _saveConfig , SaveConfigArgs } from './actions'
 
 
 interface DesignConfiguratorProps {
@@ -33,9 +35,11 @@ const DesignConfigurator = ({
   const { toast } = useToast()
   const router = useRouter()
 
- /*  const { mutate: saveConfig, isPending } = useMutation({
+  // wen we call this function saved croped image and update db both functions run
+   const { mutate: saveConfig, isPending } = useMutation({
      mutationKey: ['save-config'],
      mutationFn: async (args: SaveConfigArgs) => {
+      // saveConfiguration saved croped image
        await Promise.all([saveConfiguration(), _saveConfig(args)])
      },
      onError: () => {
@@ -48,7 +52,7 @@ const DesignConfigurator = ({
      onSuccess: () => {
        router.push(`/configure/preview?id=${configId}`)
      },
-  }) */
+  }) 
 
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number]
@@ -383,7 +387,7 @@ const DesignConfigurator = ({
               <Button
               /*   isLoading={isPending}
                 disabled={isPending}
-                loadingText="Saving"
+                loadingText="Saving" */
                 onClick={() =>
                   saveConfig({
                     configId,
@@ -392,10 +396,10 @@ const DesignConfigurator = ({
                     material: options.material.value,
                     model: options.model.value,
                   })
-                } */
+                }
                 size='sm'
                 className='w-full'
-                onClick={()=>{saveConfiguration()}}>
+                >
                 Continue
                 <ArrowRight className='h-4 w-4 ml-1.5 inline' />
               </Button>

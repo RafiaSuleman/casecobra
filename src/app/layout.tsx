@@ -5,17 +5,19 @@ import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./globals.css";
 import Providers from "./components/providers";
+import { Recursive } from 'next/font/google'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
+const recursive = Recursive({ subsets: ['latin'] })
+ /* const geistSans = localFont({
+   src: "./fonts/GeistVF.woff",
+   variable: "--font-geist-sans",
+   weight: "100 900",
+ });
+ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
-});
+}); */
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,11 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      {/*  <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      >  */}
+    <body className={recursive.className}>
         <Navbar/>
-        <main className="flex flex-col min-h-[calc(100vh-3.5rem-1px)]"> 
+        <main className="flex grainy-light  flex-col min-h-[calc(100vh-3.5rem-1px)]"> 
           <div className="flex-1 flex flex-col h-full">
           <Providers>
            {children}
