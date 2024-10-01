@@ -6,16 +6,12 @@ import { COLORS, MODELS } from '@/validators/option-validator'
 import { Configuration } from '@prisma/client'
 import { ArrowRight, Check } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import Confetti from 'react-dom-confetti'
 import { BASE_PRICE, PRODUCT_PRICES } from '@/app/config/product'
 import Phone from '@/app/components/phone'
 import { useToast } from '@/hooks/use-toast'
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
-
-  const { toast } = useToast()
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
   useEffect(() => setShowConfetti(true))
