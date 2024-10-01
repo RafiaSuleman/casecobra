@@ -2,9 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { cn, formatPrice } from '@/lib/utils'
-import { COLORS, FINISHES, MODELS } from '@/validators/option-validator'
+import { COLORS, MODELS } from '@/validators/option-validator'
 import { Configuration } from '@prisma/client'
-import { useMutation } from '@tanstack/react-query'
 import { ArrowRight, Check } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -12,17 +11,11 @@ import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import Confetti from 'react-dom-confetti'
 import { BASE_PRICE, PRODUCT_PRICES } from '@/app/config/product'
 import Phone from '@/app/components/phone'
-import { createCheckoutSession } from './action'
-import { toast } from '@/hooks/use-toast'
 import { useToast } from '@/hooks/use-toast'
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
-  
-  const router = useRouter()
+
   const { toast } = useToast()
-  const { id } = configuration
-  const { user } = useKindeBrowserClient()
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
   useEffect(() => setShowConfetti(true))
@@ -39,34 +32,6 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     totalPrice += PRODUCT_PRICES.material.polycarbonate
   if (finish === 'textured') totalPrice += PRODUCT_PRICES.finish.textured
 
-//   mutation-> to change data to somewere in our case is to generate url using stripe
-   /*  const { mutate: createPaymentSession } = useMutation({
-    mutationKey: ['get-checkout-session'],
-    mutationFn: createCheckoutSession,
-    // on success mean that the stripe create a sesion not that user already paid
-    onSuccess: ({ url }) => {
-      if (url) router.push(url)
-      else throw new Error('Unable to retrieve payment URL.')
-    },
-    onError: () => {
-      toast({
-        title: 'Something went wrong',
-        description: 'There was an error on our end. Please try again.',
-        variant: 'destructive',
-      })
-    },
-  }) */ 
-
-   /* const handleCheckout = () => {
-    if (user) {
-      // create payment session
-      createPaymentSession({ configId: id })
-    } else {
-      // need to log in
-      localStorage.setItem('configurationId', id)
-      setIsLoginModalOpen(true)
-    }
-  }  */
 
   return (
     <>
