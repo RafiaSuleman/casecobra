@@ -80,21 +80,52 @@ import {
           <div className='max-w-7xl w-full mx-auto flex flex-col sm:gap-4 sm:py-4'>
             <div className='flex flex-col gap-16'>
               <div className='grid gap-4 sm:grid-cols-2'>
-                {/* Card Components Here */}
+                <Card>
+                  <CardHeader className='pb-2'>
+                    <CardDescription>Last Week</CardDescription>
+                    <CardTitle className='text-4xl'>
+                      {formatPrice(lastWeekSum._sum.amount ?? 0)}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className='text-sm text-muted-foreground'>
+                      of {formatPrice(WEEKLY_GOAL)} goal
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Progress
+                      value={((lastWeekSum._sum.amount ?? 0) * 100) / WEEKLY_GOAL}
+                    />
+                  </CardFooter>
+                </Card>
+                <Card>
+                  <CardHeader className='pb-2'>
+                    <CardDescription>Last Month</CardDescription>
+                    <CardTitle className='text-4xl'>
+                      {formatPrice(lastMonthSum._sum.amount ?? 0)}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className='text-sm text-muted-foreground'>
+                      of {formatPrice(MONTHLY_GOAL)} goal
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Progress
+                      value={((lastMonthSum._sum.amount ?? 0) * 100) / MONTHLY_GOAL}
+                    />
+                  </CardFooter>
+                </Card>
               </div>
   
-              <h1 className='text-4xl font-bold tracking-tight'>
-                Incoming orders
-              </h1>
+              <h1 className='text-4xl font-bold tracking-tight'>Incoming orders</h1>
   
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>Customer</TableHead>
                     <TableHead className='hidden sm:table-cell'>Status</TableHead>
-                    <TableHead className='hidden sm:table-cell'>
-                      Purchase date
-                    </TableHead>
+                    <TableHead className='hidden sm:table-cell'>Purchase date</TableHead>
                     <TableHead className='text-right'>Amount</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -132,4 +163,6 @@ import {
       return notFound();
     }
   };
+  
+  export default Page;
   
