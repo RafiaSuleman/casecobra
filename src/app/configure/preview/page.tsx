@@ -26,12 +26,17 @@ const Page = async ({ searchParams }: PageProps) => {
     }
 
     return <DesignPreview configuration={configuration} />;
-  } catch (error: any) {
-    console.error('Error fetching configuration:', error.message);
-    console.error('Full error details:', error);
+  } catch (error: unknown) {
+    // Narrow down the error type
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       console.error('Prisma error code:', error.code);
+    } else if (error instanceof Error) {
+      console.error('Error fetching configuration:', error.message);
+      console.error('Full error details:', error);
+    } else {
+      console.error('Unexpected error:', error);
     }
+
     return notFound();
   }
 };
