@@ -17,8 +17,10 @@ const Page = async ({ searchParams }: PageProps) => {
 
   const configuration = await db.configuration.findUnique({
     where: { id },
-  })
-
+  }).catch((error) => {
+    console.error("Database query failed: ", error);
+    throw new Error("Could not fetch configuration");
+  });
   if(!configuration) {
     return notFound()
   }
