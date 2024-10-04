@@ -21,9 +21,10 @@ const Page = async ({ searchParams }: PageProps) => {
     console.error("Database query failed: ", error);
     throw new Error("Could not fetch configuration");
   });
-  if(!configuration) {
-    return notFound()
+  if (!configuration) {
+    return notFound();
   }
+  
 
   return <DesignPreview configuration={configuration} />
 }
