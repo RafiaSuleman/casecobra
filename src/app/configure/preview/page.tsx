@@ -11,22 +11,31 @@ interface PageProps {
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = searchParams
 
+  // Validate the ID from searchParams
   if (!id || typeof id !== 'string') {
+    console.error('No ID provided or invalid ID type.')
     return notFound()
   }
 
-  const configuration = await db.configuration.findUnique({
-    where: { id },
-  }).catch((error) => {
-    console.error("Database query failed: ", error);
-    throw new Error("Could not fetch configuration");
-  });
-  if (!configuration) {
-    return notFound();
-  }
-  
+  try {
+    // Fetch configuration from the database
+    const configuration = await db.configuration.findUnique({
+      where: { id },
+    })
 
-  return <DesignPreview configuration={configuration} />
+    // If no configuration found, log the ID and return 404
+    if (!configuration) {
+      console.error(`No configuration found for ID: ${id}`)
+      return notFound()
+    }
+
+    // Return the DesignPreview component with the fetched configuration
+    return <DesignPreview configuration={configuration} />
+  } catch (error) {
+    // Log any potential errors during the fetch operation
+    console.error('Error fetching configuration:', error)
+    return notFound()
+  }
 }
 
 export default Page
